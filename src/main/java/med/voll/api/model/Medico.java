@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.dto.MedicoDTO;
+import med.voll.api.dto.medico.MedicoCadastroDTO;
 
 @Entity
 @Table(name = "medicos")
@@ -29,7 +29,7 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
-    public Medico(MedicoDTO medicoDTO) {
+    public Medico(MedicoCadastroDTO medicoDTO) {
         this.nome = medicoDTO.nome();
         this.email = medicoDTO.email();
         this.telefone = medicoDTO.telefone();
