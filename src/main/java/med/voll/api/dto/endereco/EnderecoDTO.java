@@ -20,7 +20,6 @@ public record EnderecoDTO(
         @NotBlank
         String uf,
 
-
         String complemento,
 
         String numero) {

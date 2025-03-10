@@ -1,6 +1,7 @@
 package med.voll.api.service;
 
 import jakarta.transaction.Transactional;
+import med.voll.api.dto.medico.MedicoAtualizacaoDTO;
 import med.voll.api.dto.medico.MedicoCadastroDTO;
 import med.voll.api.dto.medico.MedicoListaDTO;
 import med.voll.api.model.Medico;
@@ -25,5 +26,15 @@ public class MedicoService {
                 .map(MedicoListaDTO::new);
     }
 
+    @Transactional
+    public void atualizar(MedicoAtualizacaoDTO medicoAtualizacaoDTO) {
+        var medico = medicoRepository.getReferenceById(medicoAtualizacaoDTO.id());
+        medico.atualizarInformacoes(medicoAtualizacaoDTO);
+    }
 
+    @Transactional
+    public void excluir(Long id) {
+        var medico = medicoRepository.getReferenceById(id);
+        medico.excluir();
+    }
 }

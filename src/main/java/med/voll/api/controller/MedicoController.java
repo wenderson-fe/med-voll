@@ -1,6 +1,7 @@
 package med.voll.api.controller;
 
 import jakarta.validation.Valid;
+import med.voll.api.dto.medico.MedicoAtualizacaoDTO;
 import med.voll.api.dto.medico.MedicoCadastroDTO;
 import med.voll.api.dto.medico.MedicoListaDTO;
 import med.voll.api.service.MedicoService;
@@ -23,7 +24,18 @@ public class MedicoController {
     }
 
     @GetMapping
-    public Page<MedicoListaDTO> medicoListaDTO(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
+    public Page<MedicoListaDTO> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         return medicoService.listar(paginacao);
+    }
+
+    @PutMapping
+    public void atualizar(@RequestBody @Valid MedicoAtualizacaoDTO medicoAtualizacaoDTO) {
+        medicoService.atualizar(medicoAtualizacaoDTO);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable Long id) {
+        medicoService.excluir(id);
     }
 }
