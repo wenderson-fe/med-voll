@@ -22,7 +22,7 @@ public class MedicoService {
     }
 
     public Page<MedicoListaDTO> listar(Pageable paginacao) {
-        return medicoRepository.findAll(paginacao)
+        return medicoRepository.findAllByAtivoTrue(paginacao)
                 .map(MedicoListaDTO::new);
     }
 
