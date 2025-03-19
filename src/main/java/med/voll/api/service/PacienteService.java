@@ -1,6 +1,7 @@
 package med.voll.api.service;
 
 import jakarta.transaction.Transactional;
+import med.voll.api.dto.paciente.PacienteAtualizacaoDTO;
 import med.voll.api.dto.paciente.PacienteCadastroDTO;
 import med.voll.api.model.Paciente;
 import med.voll.api.repository.PacienteRepository;
@@ -15,5 +16,17 @@ public class PacienteService {
     @Transactional
     public void cadastrar(PacienteCadastroDTO pacienteCadastroDTO){
         pacienteRepository.save(new Paciente(pacienteCadastroDTO));
+    }
+
+    @Transactional
+    public void atualizar(PacienteAtualizacaoDTO pacienteAtualizacaoDTO) {
+        var paciente = pacienteRepository.getReferenceById(pacienteAtualizacaoDTO.id());
+        paciente.atualizarInformacoes(pacienteAtualizacaoDTO);
+    }
+
+    @Transactional
+    public void excluir(Long id) {
+        var paciente = pacienteRepository.getReferenceById(id);
+        paciente.excluir();
     }
 }

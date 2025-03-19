@@ -1,13 +1,11 @@
 package med.voll.api.controller;
 
 import jakarta.validation.Valid;
+import med.voll.api.dto.paciente.PacienteAtualizacaoDTO;
 import med.voll.api.dto.paciente.PacienteCadastroDTO;
 import med.voll.api.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/pacientes")
@@ -18,5 +16,15 @@ public class PacienteController {
     @PostMapping
     public void cadastrar(@RequestBody @Valid PacienteCadastroDTO pacienteCadastroDTO){
         pacienteService.cadastrar(pacienteCadastroDTO);
+    }
+
+    @PutMapping()
+    public void atualizar(@RequestBody @Valid PacienteAtualizacaoDTO pacienteAtualizacaoDTO) {
+        pacienteService.atualizar(pacienteAtualizacaoDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable Long id) {
+        pacienteService.excluir(id);
     }
 }

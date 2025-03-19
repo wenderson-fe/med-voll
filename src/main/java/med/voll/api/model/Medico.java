@@ -51,8 +51,8 @@ public class Medico {
             this.telefone = medicoAtualizacaoDTO.telefone();
         }
 
-        if(medicoAtualizacaoDTO.enderecoDTO() != null) {
-            this.endereco.atualizar(medicoAtualizacaoDTO.enderecoDTO());
+        if(medicoAtualizacaoDTO.endereco() != null) {
+            this.endereco.atualizar(medicoAtualizacaoDTO.endereco());
         }
     }
 
