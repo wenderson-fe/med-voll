@@ -2,7 +2,6 @@ package med.voll.api.service;
 
 import jakarta.transaction.Transactional;
 import med.voll.api.dto.medico.MedicoAtualizacaoDTO;
-import med.voll.api.dto.medico.MedicoCadastroDTO;
 import med.voll.api.dto.medico.MedicoListaDTO;
 import med.voll.api.model.Medico;
 import med.voll.api.repository.MedicoRepository;
@@ -17,8 +16,8 @@ public class MedicoService {
     private MedicoRepository medicoRepository;
 
     @Transactional
-    public void cadastrar(MedicoCadastroDTO medicoCadastroDTO) {
-        medicoRepository.save(new Medico(medicoCadastroDTO));
+    public void cadastrar(Medico medico) {
+        medicoRepository.save(medico);
     }
 
     public Page<MedicoListaDTO> listar(Pageable paginacao) {
@@ -27,9 +26,10 @@ public class MedicoService {
     }
 
     @Transactional
-    public void atualizar(MedicoAtualizacaoDTO medicoAtualizacaoDTO) {
+    public Medico atualizar(MedicoAtualizacaoDTO medicoAtualizacaoDTO) {
         var medico = medicoRepository.getReferenceById(medicoAtualizacaoDTO.id());
         medico.atualizarInformacoes(medicoAtualizacaoDTO);
+        return medico;
     }
 
     @Transactional
