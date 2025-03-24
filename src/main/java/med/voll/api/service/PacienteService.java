@@ -38,4 +38,7 @@ public class PacienteService {
         paciente.excluir();
     }
 
+    public Paciente detalhar(Long id) {
+        return pacienteRepository.getReferenceById(id);
+    }
 }

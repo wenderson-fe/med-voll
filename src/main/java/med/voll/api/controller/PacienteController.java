@@ -50,4 +50,10 @@ public class PacienteController {
         pacienteService.excluir(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PacienteDetalhamentoDTO> detalhar(@PathVariable Long id) {
+        var paciente = pacienteService.detalhar(id);
+        return ResponseEntity.ok(new PacienteDetalhamentoDTO(paciente));
+    }
 }
