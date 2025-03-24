@@ -2,7 +2,6 @@ package med.voll.api.service;
 
 import jakarta.transaction.Transactional;
 import med.voll.api.dto.paciente.PacienteAtualizacaoDTO;
-import med.voll.api.dto.paciente.PacienteCadastroDTO;
 import med.voll.api.dto.paciente.PacienteListaDTO;
 import med.voll.api.model.Paciente;
 import med.voll.api.repository.PacienteRepository;
@@ -11,17 +10,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
 public class PacienteService {
     @Autowired
     private PacienteRepository pacienteRepository;
 
     @Transactional
-    public void cadastrar(PacienteCadastroDTO pacienteCadastroDTO){
-        pacienteRepository.save(new Paciente(pacienteCadastroDTO));
+    public void cadastrar(Paciente paciente){
+        pacienteRepository.save(paciente);
     }
 
     public Page<PacienteListaDTO> listar(Pageable paginacao) {
@@ -30,9 +26,10 @@ public class PacienteService {
     }
 
     @Transactional
-    public void atualizar(PacienteAtualizacaoDTO pacienteAtualizacaoDTO) {
+    public Paciente atualizar(PacienteAtualizacaoDTO pacienteAtualizacaoDTO) {
         var paciente = pacienteRepository.getReferenceById(pacienteAtualizacaoDTO.id());
         paciente.atualizarInformacoes(pacienteAtualizacaoDTO);
+        return paciente;
     }
 
     @Transactional
