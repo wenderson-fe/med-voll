@@ -3,14 +3,12 @@ package med.voll.api.service;
 import jakarta.transaction.Transactional;
 import med.voll.api.dto.medico.MedicoAtualizacaoDTO;
 import med.voll.api.dto.medico.MedicoListaDTO;
-import med.voll.api.model.Medico;
-import med.voll.api.repository.MedicoRepository;
+import med.voll.api.domain.medico.Medico;
+import med.voll.api.domain.medico.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class MedicoService {

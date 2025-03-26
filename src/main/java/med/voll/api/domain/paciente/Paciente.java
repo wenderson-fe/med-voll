@@ -1,7 +1,8 @@
-package med.voll.api.model;
+package med.voll.api.domain.paciente;
 
 import jakarta.persistence.*;
 import lombok.*;
+import med.voll.api.domain.endereco.Endereco;
 import med.voll.api.dto.paciente.PacienteAtualizacaoDTO;
 import med.voll.api.dto.paciente.PacienteCadastroDTO;
 
