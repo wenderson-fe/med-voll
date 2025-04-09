@@ -1,10 +1,8 @@
-package med.voll.api.service;
+package med.voll.api.domain.paciente;
 
 import jakarta.transaction.Transactional;
 import med.voll.api.dto.paciente.PacienteAtualizacaoDTO;
 import med.voll.api.dto.paciente.PacienteListaDTO;
-import med.voll.api.domain.paciente.Paciente;
-import med.voll.api.domain.paciente.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

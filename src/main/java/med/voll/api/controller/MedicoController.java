@@ -6,7 +6,7 @@ import med.voll.api.dto.medico.MedicoCadastroDTO;
 import med.voll.api.dto.medico.MedicoDetalhamentoDTO;
 import med.voll.api.dto.medico.MedicoListaDTO;
 import med.voll.api.domain.medico.Medico;
-import med.voll.api.service.MedicoService;
+import med.voll.api.domain.medico.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
