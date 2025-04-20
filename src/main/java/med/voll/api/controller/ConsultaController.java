@@ -1,6 +1,7 @@
 package med.voll.api.controller;
 
 import jakarta.validation.Valid;
+import med.voll.api.domain.consulta.Consulta;
 import med.voll.api.domain.consulta.ConsultaService;
 import med.voll.api.dto.consulta.ConsultaDetalhamentoDTO;
 import med.voll.api.dto.consulta.DadosCancelamentoConsulta;
@@ -32,6 +33,12 @@ public class ConsultaController {
     public ResponseEntity<Void> cancelar(@RequestBody @Valid DadosCancelamentoConsulta dadosCancelamento) {
         consultaService.cancelar(dadosCancelamento);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("{id}")
+    public  ResponseEntity<ConsultaDetalhamentoDTO> detalhar(@PathVariable Long id){
+        Consulta consulta = consultaService.detalhar(id);
+        return ResponseEntity.ok().body(new ConsultaDetalhamentoDTO(consulta));
     }
 
 }

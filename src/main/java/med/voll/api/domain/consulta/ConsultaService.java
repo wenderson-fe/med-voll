@@ -83,4 +83,8 @@ public class ConsultaService {
 
         consulta.cancelar(dados);
     }
+
+    public Consulta detalhar(Long id) {
+        return consultaRepository.getReferenceById(id);
+    }
 }
