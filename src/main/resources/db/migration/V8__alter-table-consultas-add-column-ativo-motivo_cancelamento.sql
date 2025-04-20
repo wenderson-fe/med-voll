@@ -1,0 +1,3 @@
+ALTER TABLE consultas
+ADD COLUMN ativo BOOLEAN NOT NULL,
+ADD COLUMN motivo_cancelamento VARCHAR(100);

@@ -2,6 +2,7 @@ package med.voll.api.infra.exception;
 
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import jakarta.persistence.EntityNotFoundException;
+import med.voll.api.domain.ValidacaoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -40,6 +41,11 @@ public class TratadorDeErros {
     @ExceptionHandler(JWTDecodeException.class)
     public ResponseEntity tratarErroAcessoNegado() {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new Excecao("Acesso negado"));
+    }
+
+    @ExceptionHandler(ValidacaoException.class)
+    public ResponseEntity tratarErroRegraDeNegocio(ValidacaoException ex) {
+        return ResponseEntity.badRequest().body(new Excecao(ex.getMessage()));
     }
 
     @ExceptionHandler(Exception.class)
