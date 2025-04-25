@@ -53,7 +53,7 @@ public class TratadorDeErros {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Excecao(ex.getLocalizedMessage()));
     }
 
-    private record DadosErroValidacao(String campo, String mensagem) {
+    public record DadosErroValidacao(String campo, String mensagem) {
         public DadosErroValidacao(FieldError error) {
             this(
                     error.getField(),
@@ -62,7 +62,7 @@ public class TratadorDeErros {
         }
     }
 
-    private record Excecao(String erro) {
+    public record Excecao(String erro) {
     }
 
 }
