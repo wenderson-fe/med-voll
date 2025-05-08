@@ -28,8 +28,7 @@ public class MedicoController implements MedicoControllerDoc {
 
     @PostMapping
     public ResponseEntity<MedicoDetalhamentoDTO> cadastrar(@RequestBody @Valid MedicoCadastroDTO medicoCadastroDTO, UriComponentsBuilder uriBuilder) {
-        var medico = new Medico(medicoCadastroDTO);
-        medicoService.cadastrar(medico);
+        var medico = medicoService.cadastrar(medicoCadastroDTO);
 
         URI uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
         return ResponseEntity.created(uri).body(new MedicoDetalhamentoDTO(medico));

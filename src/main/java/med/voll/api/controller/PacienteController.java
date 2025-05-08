@@ -28,8 +28,7 @@ public class PacienteController implements PacienteControllerDoc {
 
     @PostMapping
     public ResponseEntity<PacienteDetalhamentoDTO> cadastrar(@RequestBody @Valid PacienteCadastroDTO pacienteCadastroDTO, UriComponentsBuilder uriBuilder){
-        var paciente = new Paciente(pacienteCadastroDTO);
-        pacienteService.cadastrar(paciente);
+        var paciente = pacienteService.cadastrar(pacienteCadastroDTO);
 
         URI uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(paciente.getId()).toUri();
         return ResponseEntity.created(uri).body(new PacienteDetalhamentoDTO(paciente));

@@ -2,6 +2,7 @@ package med.voll.api.domain.medico;
 
 import jakarta.transaction.Transactional;
 import med.voll.api.dto.medico.MedicoAtualizacaoDTO;
+import med.voll.api.dto.medico.MedicoCadastroDTO;
 import med.voll.api.dto.medico.MedicoListaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,8 +15,10 @@ public class MedicoService {
     private MedicoRepository medicoRepository;
 
     @Transactional
-    public void cadastrar(Medico medico) {
+    public Medico cadastrar(MedicoCadastroDTO dadosCadastro) {
+        Medico medico = new Medico(dadosCadastro);
         medicoRepository.save(medico);
+        return medico;
     }
 
     public Page<MedicoListaDTO> listar(Pageable paginacao) {

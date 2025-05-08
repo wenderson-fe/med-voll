@@ -2,10 +2,12 @@ package med.voll.api.domain.paciente;
 
 import jakarta.transaction.Transactional;
 import med.voll.api.dto.paciente.PacienteAtualizacaoDTO;
+import med.voll.api.dto.paciente.PacienteCadastroDTO;
 import med.voll.api.dto.paciente.PacienteListaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,8 +16,10 @@ public class PacienteService {
     private PacienteRepository pacienteRepository;
 
     @Transactional
-    public void cadastrar(Paciente paciente){
+    public Paciente cadastrar(PacienteCadastroDTO dadosPaciente){
+        Paciente paciente = new Paciente(dadosPaciente);
         pacienteRepository.save(paciente);
+        return paciente;
     }
 
     public Page<PacienteListaDTO> listar(Pageable paginacao) {
