@@ -1,0 +1,7 @@
+CREATE TABLE dados_usuarios (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    cpf VARCHAR(11) UNIQUE NOT NULL,
+    data_nascimento DATE NOT NULL,
+    cargo VARCHAR(80) NOT NULL
+);
