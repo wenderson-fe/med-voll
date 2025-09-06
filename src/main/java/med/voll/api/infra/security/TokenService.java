@@ -4,7 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import med.voll.api.domain.usuario.Usuario;
+import med.voll.api.domain.usuario.LoginUsuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class TokenService {
 
     private static final String ISSUER = "API Voll.Med";
 
-    public String gerarToken(Usuario usuario) {
+    public String gerarToken(LoginUsuario usuario) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
