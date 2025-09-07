@@ -16,6 +16,7 @@ import med.voll.api.dto.paciente.PacienteCadastroDTO;
 import med.voll.api.dto.paciente.PacienteDetalhamentoDTO;
 import med.voll.api.dto.paciente.PacienteListaDTO;
 import med.voll.api.infra.exception.TratadorDeErros;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -35,12 +36,20 @@ public interface MedicoControllerDoc {
     })
     ResponseEntity<MedicoDetalhamentoDTO> cadastrar(@RequestBody @Valid MedicoCadastroDTO medicoCadastroDTO, UriComponentsBuilder uriBuilder);
 
-    @Operation(summary = "Listar Médicos", description = "Retorna uma lista paginada de médicos ativos")
+    @Operation(summary = "Listar Médicos", description = "Retorna uma lista paginada de médicos ativos",
+            parameters = {
+                    @Parameter(name = "page", example = "0", description = "Número da página (inicia em 0)"),
+                    @Parameter(name = "size", example = "10", description = "Quantidade de registros por página"),
+                    @Parameter(name = "sort", example = "nome,asc", description = "Campo para ordenação. Formato: campo,asc|desc")
+            }
+    )
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Lista de médicos retornada com sucesso"),
             @ApiResponse(responseCode = "403", description = "Acesso negado", content = @Content(schema = @Schema(hidden = true)))
     })
-    ResponseEntity<Page<MedicoListaDTO>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao);
+    ResponseEntity<Page<MedicoListaDTO>> listar(
+            @ParameterObject
+            @PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao);
 
     @Operation(summary = "Atualizar médico", description = "Atualiza as informações de um médico existente")
     @ApiResponses({
