@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,6 +26,18 @@ public class LoginUsuario implements UserDetails {
     private Long id;
     private String login;
     private String senha;
+    private LocalDateTime ultimoLogin;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dados_usuario_id")
+    private DadosUsuario usuario;
+
+    public LoginUsuario(String login, String encode, DadosUsuario usuario) {
+        this.login = login;
+        this.senha = encode;
+        this.ultimoLogin = LocalDateTime.now();
+        this.usuario = usuario;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
