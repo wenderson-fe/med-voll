@@ -2,6 +2,7 @@ package med.voll.api.controller;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
+import med.voll.api.doc.UsuarioControllerDoc;
 import med.voll.api.domain.usuario.DadosUsuario;
 import med.voll.api.domain.usuario.service.UsuarioService;
 import med.voll.api.dto.usuario.UsuarioCadastroDTO;
@@ -19,7 +20,7 @@ import java.net.URI;
 @RestController
 @RequestMapping("usuario")
 @SecurityRequirement(name = "bearer-key")
-public class UsuarioController {
+public class UsuarioController implements UsuarioControllerDoc {
     @Autowired
     private UsuarioService service;
 
