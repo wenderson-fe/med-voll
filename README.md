@@ -1,13 +1,16 @@
 #  Voll Med - Backend
 
 ## Descrição 
-Voll Med é uma clínica médica fictícia que precisa de um aplicativo para gestão de consultas. O aplicativo deve possuir funcionalidades que permitam o cadastro de médicos e de pacientes, e também o agendamento e cancelamento de consultas.
+Voll Med é uma clínica médica fictícia que precisa de um aplicativo para gestão de consultas. O aplicativo deve possuir funcionalidades que permitam o cadastro de médicos e de pacientes, e também o agendamento, detalhamento e cancelamento de consultas.
 
 ## ⚙️ Funcionalidades
 - CRUD de médicos;
 - CRUD de pacientes;
 - Agendamento de consultas;
-- Cancelamento de consultas.
+- Cancelamento de consultas;
+- Detalhamento de consultas;
+- Cadastro de usuários;
+- Login de usuários.
 
 ## 📄 Documentação
 A documentação das funcionalidades da aplicação pode ser acessada neste link: [Trello](https://trello.com/b/O0lGCsKb/api-voll-med)
